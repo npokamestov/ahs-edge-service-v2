@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public User createAUser(@RequestBody User user) {
+    public User createUser(@RequestBody User user) {
         return repo.save(user);
     }
 

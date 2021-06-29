@@ -1,4 +1,4 @@
-package com.adhocsensei.ahsedgeservice;
+package com.adhocsensei.ahsedgeservice.controller;
 
 import com.adhocsensei.ahsedgeservice.service.AdHocSenseiService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ public class AdHocSenseiController {
 
 //    create/register a user (no restrictions)
 
-
 //    get all courses (no restrictions)
 
 //    get one course (no restrictions)
@@ -33,13 +32,12 @@ public class AdHocSenseiController {
 
 //    create a course (sensei)
 
-//    update a course (sensei)
+//    update a course, but only the ones they created (sensei)
 
-//    delete a course (sensei)
+//    delete a course, but only the ones they created (sensei)
 
 //    register for a course (student and sensei)
 
 //    unregister for a course (student and sensei)
-
 
 }
