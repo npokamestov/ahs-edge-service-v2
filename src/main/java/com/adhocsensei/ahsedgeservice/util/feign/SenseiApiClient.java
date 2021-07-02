@@ -16,14 +16,14 @@ public interface SenseiApiClient {
     @GetMapping("/senseiCourse/senseiList/{id}")
     public List<Sensei> getAllSenseiCoursesBySenseiId(@PathVariable Long id);
 
-    @GetMapping("/senseiCourse/{id}")
-    public Sensei getSenseiCourseById(@PathVariable Long id);
+//    @GetMapping("/senseiCourse/{id}")
+//    public Sensei getSenseiCourseById(@PathVariable Long id);
 
     @PostMapping("/senseiCourse")
     public Sensei createSenseiCourse(@RequestBody Sensei sensei);
 
-    @PutMapping("/senseiCourse/{id}")
-    public void updateSenseiCourseById(@PathVariable Long id, @RequestBody Sensei sensei);
+//    @PutMapping("/senseiCourse/{id}")
+//    public void updateSenseiCourseById(@PathVariable Long id, @RequestBody Sensei sensei);
 
     @DeleteMapping("/senseiCourse/{id}")
     public void deleteSenseiCourseById(@PathVariable Long id);

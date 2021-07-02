@@ -30,11 +30,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
-//    private final JwtConverter converter;
-//
-//    public WebSecurityConfig(JwtConverter converter) {
-//        this.converter = converter;
-//    }
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -73,16 +68,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
-//        httpSecurity.authorizeRequests()
-//                .antMatchers("/authenticate").permitAll()
-//                .antMatchers(HttpMethod.POST, "/refresh_token").authenticated()
-//                .antMatchers("/login").authenticated()
-//                .and()
-//                .addFilter(new JwtRequestFilter(authenticationManager(), converter))
-//                .sessionManagement()
-//                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
-
         httpSecurity
                 .logout()
                 .clearAuthentication(true)
@@ -90,6 +75,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/loggedout").deleteCookies("JSESSIONID").deleteCookies("XSRF-TOKEN")
                 .invalidateHttpSession(true);
         System.out.println("loggout process has completed, moving to confirmation page");
-
     }
 }

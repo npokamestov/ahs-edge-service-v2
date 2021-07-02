@@ -75,10 +75,6 @@ public class AdHocSenseiService {
             return newUser;
     }
 
-//    public DAOUser getUserById(@PathVariable Long id) {
-//        return userRepo.getById(id);
-//    }
-
     public void updateUserById(@PathVariable Long id, @RequestBody DAOUser DAOUser){
         Optional<DAOUser> optionalUser = userRepo.findById(id);
         if (optionalUser.isPresent()) {
