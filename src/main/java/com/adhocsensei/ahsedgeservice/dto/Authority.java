@@ -14,15 +14,18 @@ public class Authority {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Long userId;
+    private String username;
     private String authority;
 
     public Authority() {
     }
 
-    public Authority(Long id, Long userId, String authority) {
+    public Authority(Long id, Long userId, String username, String authority) {
         this.id = id;
         this.userId = userId;
+        this.username = username;
         this.authority = authority;
+
     }
 
     public Long getId() {
@@ -41,6 +44,14 @@ public class Authority {
         this.userId = userId;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getAuthority() {
         return authority;
     }
@@ -54,12 +65,12 @@ public class Authority {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Authority authority1 = (Authority) o;
-        return Objects.equals(getId(), authority1.getId()) && Objects.equals(getUserId(), authority1.getUserId()) && Objects.equals(getAuthority(), authority1.getAuthority());
+        return Objects.equals(getId(), authority1.getId()) && Objects.equals(getUserId(), authority1.getUserId()) && Objects.equals(getUsername(), authority1.getUsername()) && Objects.equals(getAuthority(), authority1.getAuthority());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getUserId(), getAuthority());
+        return Objects.hash(getId(), getUserId(), getUsername(), getAuthority());
     }
 
     @Override
@@ -67,6 +78,7 @@ public class Authority {
         return "Authority{" +
                 "id=" + id +
                 ", userId=" + userId +
+                ", username='" + username + '\'' +
                 ", authority='" + authority + '\'' +
                 '}';
     }

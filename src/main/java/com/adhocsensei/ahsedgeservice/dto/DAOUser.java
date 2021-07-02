@@ -1,5 +1,6 @@
 package com.adhocsensei.ahsedgeservice.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.util.Objects;
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Table(name = "users")
-public class User {
+public class DAOUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -17,7 +18,8 @@ public class User {
     private String lastName;
 
     //    validation for no repeats
-    private String email;
+    private String username;
+    @JsonIgnore
     private String password;
 
     private String bio;
@@ -26,14 +28,14 @@ public class User {
     private boolean enabled;
     private Long authorityId;
 
-    public User() {
+    public DAOUser() {
     }
 
-    public User(Long id, String firstName, String lastName, String email, String password, String bio, boolean instructor, boolean enabled, Long authorityId) {
+    public DAOUser(Long id, String firstName, String lastName, String username, String password, String bio, boolean instructor, boolean enabled, Long authorityId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.bio = bio;
         this.instructor = instructor;
@@ -65,12 +67,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -117,22 +119,22 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return isInstructor() == user.isInstructor() && isEnabled() == user.isEnabled() && Objects.equals(getId(), user.getId()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getEmail(), user.getEmail()) && Objects.equals(getPassword(), user.getPassword()) && Objects.equals(getBio(), user.getBio()) && Objects.equals(getAuthorityId(), user.getAuthorityId());
+        DAOUser DAOUser = (DAOUser) o;
+        return isInstructor() == DAOUser.isInstructor() && isEnabled() == DAOUser.isEnabled() && Objects.equals(getId(), DAOUser.getId()) && Objects.equals(getFirstName(), DAOUser.getFirstName()) && Objects.equals(getLastName(), DAOUser.getLastName()) && Objects.equals(getUsername(), DAOUser.getUsername()) && Objects.equals(getPassword(), DAOUser.getPassword()) && Objects.equals(getBio(), DAOUser.getBio()) && Objects.equals(getAuthorityId(), DAOUser.getAuthorityId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getFirstName(), getLastName(), getEmail(), getPassword(), getBio(), isInstructor(), isEnabled(), getAuthorityId());
+        return Objects.hash(getId(), getFirstName(), getLastName(), getUsername(), getPassword(), getBio(), isInstructor(), isEnabled(), getAuthorityId());
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "DAOUser{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", bio='" + bio + '\'' +
                 ", instructor=" + instructor +

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@FeignClient(name = "course-api")
+@FeignClient(name = "course-service")
 public interface CourseApiClient {
 
     @GetMapping("/course")
@@ -15,10 +15,14 @@ public interface CourseApiClient {
                                       @RequestParam(required = false) String category,
                                       @RequestParam(required = false) String location,
                                       @RequestParam(required = false) String date,
-                                      @RequestParam(required = false) String shortDescription);
+                                      @RequestParam(required = false) String shortDescription,
+                                      @RequestParam(required = false) Long senseiId);
 
     @GetMapping("/course/{id}")
     public Optional<Course> getCourseById(@PathVariable Long id);
+
+    @GetMapping("/course/sensei/{id}")
+    public List<Course> getCourseBySenseiId(@PathVariable Long id);
 
     @PostMapping("/course")
     public Course createCourse(@RequestBody Course course);

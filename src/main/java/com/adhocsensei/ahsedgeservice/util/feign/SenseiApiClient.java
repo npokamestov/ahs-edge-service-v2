@@ -6,11 +6,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "sensei-api")
+@FeignClient(name = "sensei-service")
 public interface SenseiApiClient {
 
     @GetMapping("/senseiCourse")
-    public List<Sensei> getAllSenseiCourses();
+    public List<Sensei> getAllSenseiCourses(@RequestParam(required = false) Long userId,
+                                            @RequestParam(required = false) Long courseId);
+
+    @GetMapping("/senseiCourse/senseiList/{id}")
+    public List<Sensei> getAllSenseiCoursesBySenseiId(@PathVariable Long id);
 
     @GetMapping("/senseiCourse/{id}")
     public Sensei getSenseiCourseById(@PathVariable Long id);

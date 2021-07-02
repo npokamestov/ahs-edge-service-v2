@@ -8,6 +8,9 @@ public class Student {
     private Long userId;
     private Long courseId;
 
+    public Student() {
+    }
+
     public Student(Long id, Long userId, Long courseId) {
         this.id = id;
         this.userId = userId;
